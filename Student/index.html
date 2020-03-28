@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student</title>
+<!-- for-mobile-apps -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Job Application Form Widget Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- //for-mobile-apps -->
+<link href='//fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="css/j-forms.css">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+<div class="content">
+		<h1>Student</h1>
+		<div class="main">
+			<form class="contact-forms">
+				<!-- end /.header-->
+
+
+					<!-- start email phone -->
+					<div class="first-line">
+						<div class="span10 main-row">
+							<div class="input">
+								
+								<input type="email" placeholder="Email" id="email" name="email">
+							</div>
+						</div>
+						
+					</div>
+
+				        <!-- start message -->
+					<div class="main-row">
+					        <div class="input">
+						      <input type="date" id="meeting_date" name="meeting_date">
+								<span class="tooltip tooltip-right-top">Arrange Meetings</span>
+						</div>
+					</div>
+					<!-- end message -->
+
+					
+
+
+					<!-- start message -->
+					<div class="main-row">
+						<div class="input">
+							<textarea placeholder="Additional info" spellcheck="false" name="message"></textarea>
+								<span class="tooltip tooltip-right-top">Notes</span>
+						</div>
+					</div>
+					<!-- end message -->
+
+					<!-- start files -->
+					
+						<div class=" main-row">
+							<label class="input append-small-btn">
+								<div class="upload-btn">
+									Browse
+									<input type="file" name="file1" onchange="document.getElementById('file1_input').value = this.value;">
+								</div>
+								<input type="text" id="file1_input" readonly="" placeholder="Attach your Document">
+								<span class="hint">Only: pdf / doc Size: lessthan 1 Mb</span>
+							</label>
+						</div>
+						
+					
+					<!-- end files -->
+
+			
+				<!-- end /.content -->
+
+				<div class="footer">
+					<button type="submit" class="primary-btn">Send</button>
+					<button type="reset" class="secondary-btn">Reset</button>
+				</div>
+				<!-- end /.footer -->
+
+			</form>
+		</div>
+		
+</div>
+		<!-- Scripts -->
+		<script src="js/jquery.1.11.1.min.js"></script>
+
+		<!--[if lt IE 10]>
+				<script src="j-folder/js/jquery.placeholder.min.js"></script>
+			<![endif]-->
+
+		<script>
+			$(document).ready(function(){
+
+				// Phone masking
+				$('#phone').mask('(999) 999-9999', {placeholder:'x'});
+
+				// Post code masking
+				$('#post').mask('999-9999', {placeholder:'x'});
+
+			});
+		</script>
+</body>
+</html>
