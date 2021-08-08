@@ -1,0 +1,20 @@
+@baseUrl = http://3.15.187.179:8080/
+
+
+GET {{baseUrl}}/student
+###
+
+
+PUT {{baseUrl}}/student
+Content-Type: application/json
+
+{
+
+    "email": "100@gmail.com", 
+    "id": 11, 
+    "name": "software", 
+    "password": "11", 
+    "username": "sw", 
+    "year": "1"
+}
+###

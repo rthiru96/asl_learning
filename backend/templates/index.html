@@ -1,0 +1,285 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}AutoDE{% endblock %}
+
+<body>
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <!-- API Documentation-->
+    <div class="col-md-12">
+        <h1>Welcome to American Sign Language API</h1>
+        <br>
+        <p>The American Sign Language (ASL) is a popular Sign Language used for Sign Language communication. The ASL dataset is a popular dataset for ASL.
+            This dataset is popularly used for Image Processing/Computer Vision tasks that involve Sign Language detection.
+            <br>
+            This API allows for the use of a CNN model based on MobileNet architecture built using the ASL dataset.
+            <br>
+            The following are the API Endpoints and how they can be used.
+        </p>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Table of API Endpoints -->
+                <table class="table">
+                    <!-- Table Head -->
+                    <thead>
+                        <tr>
+                            <th>End Point</th>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>Parameters</th>
+                            <th>Response</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body -->
+                    <tbody>
+                        <!-- Login - User -->
+                        <tr>
+                            <td>/login</td>
+                            <td>POST</td>
+                            <td>Allows Administrator to log in to their dashboard</td>
+                            <td>Username : String<br>Password : String</td>
+                            <td>True or False - Boolean</td>
+                        </tr>
+
+                        <!-- Login - Student -->
+                        <tr>
+                            <td>/student/login</td>
+                            <td>POST</td>
+                            <td>Allows Student to log in to their dashboard</td>
+                            <td>Username : String<br>Password : String</td>
+                            <td>True or False - Boolean</td>
+                        </tr>
+
+                        <!-- Student -->
+                        <tr>
+                            <!-- Done -->
+                            <td>/student</td>
+                            <td>GET</td>
+                            <td>Allows to view list of all students given the administrator has logged in. A token will be used to verify the logged in user.</td>
+                            <td></td>
+                            <td>JSON Object - Array of all Students and their details<br>Empty array if there are no students.</td>
+                        </tr>
+
+                        <tr>
+                            <!-- Need to decide the Columns -->
+                            <td>/student</td>
+                            <td>POST</td>
+                            <td>Allows to create a new Student in the database by passing the details of the Student.</td>
+                            <td>username, password, name, email, year</td>
+                            <td>True or False - Boolean<br>Whether the Student has been successfully created or not.</td>
+                        </tr>
+
+                        <tr>
+                            <!-- Done -->
+                            <td>/student?id=(id)</td>
+                            <td>GET</td>
+                            <td>Allows to view an individual student given their ID.</td>
+                            <td>id : integer</td>
+                            <td>JSON Object - Student Details</td>
+                        </tr>
+
+                        <tr>
+                            <!-- Need to decide the Columns -->
+                            <td>/student?id=(id)</td>
+                            <td>PUT</td>
+                            <td>Allows to update the details of an existing student given the details with which the student needs to be updated.</td>
+                            <td>id : integer, username : string, password : string, name : string, email : string, year : string</td>
+                            <td>True or False - Boolean<br>Whether the Student was updated successfully or not.</td>
+                        </tr>
+
+                        <tr>
+                            <!-- Done -->
+                            <td>/student?id=(id)</td>
+                            <td>DELETE</td>
+                            <td>Allows to delete an existing student given the ID of the student.</td>
+                            <td>Token : String, id : integer</td>
+                            <td>True or False - Boolean<br>Whether the student was deleted successfully or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?studentid=(studentid)&attempt=(attempt)</td>
+                            <td>POST</td>
+                            <td>Allows to insert a new exam result taken by a student. Need Attempt Number and StudentID.</td>
+                            <td>studentid : integer, attempt : integer, correct : integer, incorrect: integer</td>
+                            <td>True or False - Boolean<br>Whether the Exam for the Student was inserted successfully.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?studentid=(studentid)&attempt=(attempt)</td>
+                            <td>GET</td>
+                            <td>Get Details of all the attempts of the student for that exam - Student ID and Exam ID.</td>
+                            <td>studentid : integer, attempt : integer</td>
+                            <td>JSON Object - Array of all the exams taken by the student with all the details.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?id=(id)&studentid=(studentid)&attempt=(attempt)</td>
+                            <td>GET</td>
+                            <td>Get Details of the Specific Attempt of the Specific Exam (attempt) by that Specific Student (StudentID).</td>
+                            <td>id : integer, studentid : integer, attempt : integer</td>
+                            <td>JSON Obhect - Details of the specific attempt of that exam taken by that student.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?id=(id)&studentid=(studentid)&attempt=(attempt)</td>
+                            <td>PUT</td>
+                            <td>Update the details of the exam with the given ID taken by the student with the given ID.</td>
+                            <td>id : integer, studentid : integer, attempt : integer</td>
+                            <td>True or False - Boolean<br>Whether the Update was successful</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?studentid=(studentid)&attempt=(attempt)</td>
+                            <td>DELETE</td>
+                            <td>Delete all attempts of the exam taken by the student.</td>
+                            <td>studentid : integer, attempt : integer</td>
+                            <td>True or False - Boolean<br>Whether Deletion of records was successful</td>
+                        </tr>
+
+                        <tr>
+                            <td>/student/exam?id=(id)</td>
+                            <td>DELETE</td>
+                            <td>Delete the instance of the exam taken up by the student.</td>
+                            <td>id : integer</td>
+                            <td>True or False - Boolean<br>Whether the Deletion of the record was successful</td>
+                        </tr>
+
+                        <!-- User -->
+                        <tr>
+                            <td>/user</td>
+                            <td>POST</td>
+                            <td>Insert New User into the Database.</td>
+                            <td>username : string, password : string, name : string, email : string, role : integer</td>
+                            <td>True or False - Boolean<br>Whether the new user has been successfully added or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/user?id=(id)</td>
+                            <td>GET</td>
+                            <td>Get user with the given user id.</td>
+                            <td>id : integer</td>
+                            <td>JSON Object - The user object.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/user</td>
+                            <td>GET</td>
+                            <td>Get a list of all users using the platform.</td>
+                            <td></td>
+                            <td>JSON Object - Array of all the users using the platform.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/user?userid=(userid)</td>
+                            <td>PUT</td>
+                            <td>Update an existing user with the given User ID.</td>
+                            <td>userid : integer, username : string, password : string, name : string, email : string, role : integer</td>
+                            <td>True or False - Boolean<br>Whether the User with the given ID was successfully updated or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/user?userid=(userid)</td>
+                            <td>DELETE</td>
+                            <td>Delete a User with the given User ID.</td>
+                            <td>userid : integer</td>
+                            <td>True or False - Boolean<br>Whether the User with given ID was successfully deleted or not.</td>
+                        </tr>
+
+                        <!-- Messenger -->
+                        <tr>
+                            <td>/messenger</td>
+                            <td>POST</td>
+                            <td>Add a New message sent to another user by a student.</td>
+                            <td>studentid : integer, userid : integer, message : string</td>
+                            <td>True or False - Boolean<br>Whether the Message was successfully added or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?studentid=(studentid)</td>
+                            <td>GET</td>
+                            <td>Retrieve all the messages sent and received by the student with the given student id.</td>
+                            <td>studentid : integer</td>
+                            <td>JSON Object - Array of all messages belonging to that student.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?userid=(userid)</td>
+                            <td>GET</td>
+                            <td>Retrieve all messages sent and received by the user with the given user id.</td>
+                            <td>userid : integer</td>
+                            <td>JSON Object - Array of all messages belonging to that user.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?userid=(userid)&studentid=(studentid)</td>
+                            <td>GET</td>
+                            <td>Retrieve all messages exchanged between the user with the userid and student with the studentid.</td>
+                            <td>userid : integer, studentid : integer</td>
+                            <td>JSON Object - Array of all messages exchanged between that user and student.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?id=(id)</td>
+                            <td>PUT</td>
+                            <td>Update an existing message with the given id.</td>
+                            <td>id : integer, message : string</td>
+                            <td>True or False - Boolean<br>Whether the message was successfully updated or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?id=(id)</td>
+                            <td>DELETE</td>
+                            <td>Delete an exisitng message with the given id.</td>
+                            <td>id : integer</td>
+                            <td>True or False - Boolean<br>Whether the message was successfully deleted or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?studentid=(studentid)</td>
+                            <td>DELETE</td>
+                            <td>Delete all messages sent by the student with the given student id.</td>
+                            <td>studentid : integer</td>
+                            <td>True or False - Boolean<br>Whether the messages were successfully deleted or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?userid=(userid)</td>
+                            <td>DELETE</td>
+                            <td>Delete all messages sent by the user with the given user id.</td>
+                            <td>userid : integer</td>
+                            <td>True or False - Boolean<br>Whether the messages were successfully deleted or not.</td>
+                        </tr>
+
+                        <tr>
+                            <td>/messenger?userid=(userid)&studentid=(studentid)</td>
+                            <td>DELETE</td>
+                            <td>Delete all messages exchanged between the user with the userid and student with the studentid.</td>
+                            <td>userid : integer, studentid : integer</td>
+                            <td>True or False - Boolean<br>Whether the messages were successfully deleted or not.</td>
+                        </tr>
+
+                        <!-- Predict -->
+                        <tr>
+                            <td>/predict</td>
+                            <td>POST</td>
+                            <td>Get Prediction on the image.</td>
+                            <td>file : file</td>
+                            <td>Return Predicted Class as Json Object.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
